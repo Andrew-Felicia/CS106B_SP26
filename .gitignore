@@ -1,0 +1,5 @@
+# the opened sourced Stanford CS106B Library.
+stanford-cpp-library/
+
+# another git respository inside this folder.
+textbooks/CS106B_TextBook
