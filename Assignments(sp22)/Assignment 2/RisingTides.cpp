@@ -6,11 +6,36 @@ using namespace std;
 Grid<bool> floodedRegionsIn(const Grid<double>& terrain,
                             const Vector<GridLocation>& sources,
                             double height) {
-    /* TODO: Delete this line and the next four lines, then implement this function. */
-    (void) terrain;
-    (void) sources;
-    (void) height;
-    return {};
+    Grid<bool> result(terrain.numRows(), terrain.numCols(), false);
+
+    Queue<GridLocation> queue;
+    for(GridLocation elem : sources) {
+        if(terrain[elem] <= height) {
+            result[elem] = true;
+            queue.enqueue(elem);
+        }
+    }
+
+    Vector<GridLocation> neighbors = {
+        {-1, 0}, // up
+        {1, 0},  // down
+        {0, 1},  // right
+        {0, -1}  // left
+    };
+
+    while(!queue.isEmpty()) {
+        GridLocation floodedSpot = queue.dequeue();
+
+        for(const GridLocation& elem : neighbors) {
+            GridLocation neighbor = {floodedSpot.row + elem.row, floodedSpot.col + elem.col};
+            if(terrain.inBounds(neighbor) && terrain[neighbor] <= height && result[neighbor] == false) {
+                result[neighbor] = true;
+                queue.enqueue(neighbor);
+            }
+        }
+    }
+
+    return result;
 }
 
 

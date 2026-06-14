@@ -3,6 +3,7 @@
 #include "error.h"
 #include "map.h"
 #include <cmath>
+#include "priorityqueue.h"
 
 using namespace std;
 
@@ -60,31 +61,51 @@ Map<string, double> normalize(const Map<string, double>& input) {
 }
 
 Map<string, double> topKGramsIn(const Map<string, double>& source, int numToKeep) {
-    /* TODO: Delete this comment and the other lines here, then implement
-     * this function.
-     */
-    (void) source;
-    (void) numToKeep;
-    return {};
+    if(numToKeep < 0) error("numToKeep is negative.");
+    Map<string, double> result;
+    if(numToKeep == 0) return result;
+
+    if(numToKeep >= source.size()) return source;
+
+    //build priorityqueue with negative value.
+    PriorityQueue<string> pq;
+    for(string key : source) {
+        pq.enqueue(key, -source[key]);
+    }
+
+    while(numToKeep != 0) {
+        result.put(pq.peek(), -pq.peekPriority());
+        pq.dequeue();
+        numToKeep -= 1;
+    }
+    return result;
+
+
 }
 
 double cosineSimilarityOf(const Map<string, double>& lhs, const Map<string, double>& rhs) {
-    /* TODO: Delete this comment and the other lines here, then implement
-     * this function.
-     */
-    (void) lhs;
-    (void) rhs;
-    return {};
+    double result = 0.0;
+    for(string key : lhs) {
+        if(rhs.containsKey(key)) {
+            result += lhs[key] * rhs[key];
+        }
+    }
+    return result;
 }
 
 string guessLanguageOf(const Map<string, double>& textProfile,
                        const Set<Corpus>& corpora) {
-    /* TODO: Delete this comment and the other lines here, then implement
-     * this function.
-     */
-    (void) textProfile;
-    (void) corpora;
-    return "";
+    if(corpora.isEmpty()) error("corpora is empty.");
+    double similarity = 0.0;
+    string result = "";
+    for(Corpus elem : corpora) {
+        double cur_similarity = cosineSimilarityOf(textProfile, elem.profile);
+        if(cur_similarity > similarity) {
+            similarity = cur_similarity;
+            result = elem.name;
+        }
+    }
+    return result;
 }
 
 
