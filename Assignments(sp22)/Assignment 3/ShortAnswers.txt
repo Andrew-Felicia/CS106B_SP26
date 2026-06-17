@@ -1,16 +1,40 @@
 Q1:
+1.collect the worker's willing work time.
+will just do some survey on the workers, and collect the time they are willing to work.
+2.the shift's physical or mental intensity level.
+will just do some survey on the workers, and collect the time they are willing to work.
 
 
 
 
 Q2:
 
+The exact lines of code that determine which proposed timeline is "better" reside at the bottom of the recursive step,
+where the accumulated cash values of both choices are compared:
+
+C++
+if (with_value > without_value) ? with : without;
+(Note: This logic relies heavily on the totalValue helper function, which currently computes goodness entirely based
+on financial yield):
+
+C++
+int totalValue(const Set<Shift>& shifts) {
+    int result = 0;
+    for(const Shift& s : shifts){
+        result += valueOf(s);
+    }
+    return result;
+}
 
 
 
 Q3:
 
-
+The optimal order from best to worst is Schedule 2, followed by a tie between Schedule 1 and Schedule 3.
+I selected Schedule 2 as the absolute best because it maximizes a value of utilitarian fairness and mutual respect,
+ensuring neither party is exploited or structurally dissatisfied. Ranking it first explicitly prioritizes sustainable
+workplace collaboration over an asymmetric power dynamic where one side's utility is entirely compromised for the
+benefit of the other.
 
 
 

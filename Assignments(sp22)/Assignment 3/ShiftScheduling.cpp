@@ -1,14 +1,64 @@
 #include "ShiftScheduling.h"
+#include "error.h"
+
 using namespace std;
 
 /* TODO: Refer to ShiftScheduling.h for more information about what this function should do.
  * Then, delete this comment and replace it with one of your own.
  */
+
+
+
+/*
+ * calculate the total value of the given shifts set.
+ *
+ */
+int totalValue(const Set<Shift>& shifts) {
+    int result = 0;
+    for(const Shift& s : shifts){
+        result += s.value;
+    }
+    return result;
+}
+
+
+/*
+ *
+ * decide if a shift is overlap with a set of shifts, true for is overlap, false
+ * otherwise.
+ */
+bool isOverLap(const Set<Shift>& shifts, const Shift& s) {
+    for(const Shift& s1 : shifts) {
+        if(overlapsWith(s1, s)) return true;
+    }
+    return false;
+}
+
+
+
+Set<Shift> highestValueScheduleForRec(const Set<Shift>& shifts, int maxHours, const Set<Shift>& sofar) {
+    if(shifts.isEmpty() || maxHours == 0) return sofar;
+
+    Shift current_shift = shifts.first();
+    auto without = highestValueScheduleForRec(shifts - current_shift, maxHours, sofar);
+    int without_value = totalValue(without);
+
+    //decide whether to incorporate current_shift.
+    if(isOverLap(sofar, current_shift) || lengthOf(current_shift) > maxHours) {
+        return without;
+    } else {
+        auto with = highestValueScheduleForRec(shifts - current_shift, maxHours - lengthOf(current_shift), sofar + current_shift);
+        int with_value = totalValue(with);
+        return (with_value > without_value)? with : without;
+    }
+
+
+}
+
 Set<Shift> highestValueScheduleFor(const Set<Shift>& shifts, int maxHours) {
-    /* TODO: Delete the next few lines and implement this function. */
-    (void) shifts;
-    (void) maxHours;
-    return {};
+    if(maxHours < 0) error("maxHours is negative, invalid!");
+
+    return highestValueScheduleForRec(shifts, maxHours, {});
 }
 
 

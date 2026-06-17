@@ -1,5 +1,51 @@
 #include "WhatAreYouDoing.h"
+#include "vector.h"
+#include <cctype>
+#include "strlib.h"
+#include "set.h"
+
 using namespace std;
+
+void allEmphasesOfRec(const Vector<string>& token, int index, Vector<string>& current_path,
+                      Set<string>& result) {
+    if(index == token.size()) {
+        string current = "";
+        for(string i : current_path) {
+            current += i;
+        }
+        result.add(current);
+        return;
+    }
+
+    string current_token = token[index];
+
+    //current token is valid string
+    if(!current_token.empty() && isalpha(current_token[0])) {
+        //case 1: to lowercase
+        current_token = toLowerCase(current_token);
+        current_path.add(current_token);
+        allEmphasesOfRec(token, index + 1, current_path, result);
+
+        //backtracking.
+        current_path.remove(current_path.size() - 1);
+
+        //case 2: to uppercase.
+        current_token = toUpperCase(current_token);
+        current_path.add(current_token);
+        allEmphasesOfRec(token, index + 1, current_path, result);
+
+        //backtracking
+        current_path.remove(current_path.size() - 1);
+
+    } else {
+        //current token is non-string.
+        current_path.add(current_token);
+        allEmphasesOfRec(token, index + 1, current_path, result);
+        //backtracking
+        current_path.remove(current_path.size() - 1);
+    }
+
+}
 
 /* TODO: Read the comments in WhatAreYouDoing.h to see what this function needs to do, then
  * delete this comment.
@@ -8,10 +54,18 @@ using namespace std;
  * certainly want to use it.
  */
 Set<string> allEmphasesOf(const string& sentence) {
-    /* TODO: Delete this line and the next one, then implement this function. */
-    (void) sentence;
-    return {};
+    Vector<string> tokens = tokenize(sentence);
+    Set<string> result;
+    Vector<string> current_path;
+
+    allEmphasesOfRec(tokens, 0, current_path, result);
+
+    return result;
+
 }
+
+
+
 
 /* * * * * * Test Cases * * * * * */
 #include "GUI/SimpleTest.h"
@@ -21,7 +75,30 @@ Set<string> allEmphasesOf(const string& sentence) {
  */
 
 
+STUDENT_TEST("Test for base case 1") {
+    Set<string> expected = {
+        ":-)"
+    };
 
+    EXPECT_EQUAL(allEmphasesOf(":-)"), expected);
+
+}
+
+STUDENT_TEST("Test for base case 2") {
+    Set<string> expected = {""};
+
+    EXPECT_EQUAL(allEmphasesOf(""), expected);
+
+}
+
+STUDENT_TEST("Test for base case") {
+    Set<string> expected = {
+        "867-5309"
+    };
+
+    EXPECT_EQUAL(allEmphasesOf("867-5309"), expected);
+
+}
 
 
 

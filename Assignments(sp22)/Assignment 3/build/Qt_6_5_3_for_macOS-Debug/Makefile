@@ -104,7 +104,9 @@ OBJECTS       = HumanPyramids.o \
 		TestDriver.o \
 		TestingGUI.o \
 		TextUtils.o
-DIST          = /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_pre.prf \
+DIST          = ../../WhatAreYouDoing.md \
+		../../WhatAreYouDoing.txt \
+		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_pre.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/device_config.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/common/unix.conf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/common/mac.conf \
@@ -238,6 +240,7 @@ DIST          = /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_pre.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/qt_config.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/mac/sdk.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/toolchain.prf \
@@ -327,7 +330,7 @@ TARGET        = ../../../Assignment\ 3/Recursion.app/Contents/MacOS/Recursion
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 14.2
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/taoyongli/CS106B_SP26/Assignments(sp22)/Assignment 3/build/Qt_6_5_3_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -477,6 +480,7 @@ Makefile: ../../Recursion.pro /Users/taoyongli/Qt/6.5.3/macos/mkspecs/macx-clang
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/qt_config.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/mac/sdk.prf \
 		/Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/toolchain.prf \
@@ -647,6 +651,7 @@ Makefile: ../../Recursion.pro /Users/taoyongli/Qt/6.5.3/macos/mkspecs/macx-clang
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/qt_config.prf:
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/macx-clang/qmake.conf:
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/exclusive_builds.prf:
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/mac/sdk.prf:
 /Users/taoyongli/Qt/6.5.3/macos/mkspecs/features/toolchain.prf:
@@ -717,6 +722,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r ../../../Assignment\ 3/Recursion.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 

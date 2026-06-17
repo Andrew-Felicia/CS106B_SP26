@@ -146,3 +146,7 @@ FOUND ~= s|[a-z A-Z 0-9 _.+-]||   # yes, spaces ok, limited punctuation, $ % & a
     message( "*******************************************************************" )
     error(Exiting. Rename project directory to remove disallowed characters. )
 }
+
+DISTFILES += \
+    WhatAreYouDoing.md \
+    WhatAreYouDoing.txt
