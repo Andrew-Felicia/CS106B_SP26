@@ -1,0 +1,45 @@
+Put your answers to the debugging questions from Problem One in this file.
+
+Q1:
+finish: 'C'
+numDisks: 5
+start: 'A'
+temp: 'B'
+
+
+Q2:
+TowersOfHanoiGUI.cpp
+
+name:
+makeTheMagicHappen()
+
+
+Q3:
+
+31
+
+
+Q4:
+
+15
+
+
+Q5:
+
+Computing Permutations... Done!
+  ""
+
+Computing Permutations... Done!
+  "a"
+
+Computing Permutations... Done!
+  "ab"
+  "aba"
+
+Q6:
+
+chosen += ch, here you write an extra =
+
+
+Q7:
+because if you write chosen += ch, chosen is been modified, and it will carry through.
