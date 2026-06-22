@@ -1,14 +1,120 @@
 #include "Matchmaker.h"
 using namespace std;
 
-bool hasPerfectMatching(const Map<string, Set<string>>& possibleLinks, Set<Pair>& matching) {
 
+bool hasConflict(const Pair& s,const Set<Pair>& matching) {
+    for(const Pair& pair : matching) {
+        if(s.first() == pair.first() || s.first() == pair.second() || s.second() == pair.first()
+            || s.second() == pair.second()) return true;
+    }
+
+    return false;
+}
+
+bool hasPerfectMatchingRec(const Map<string, Set<string>>& possibleLinks, Set<Pair>& matching) {
+    if(possibleLinks.isEmpty()) return true;
+
+    string person1 = possibleLinks.firstKey();
+    Set<string> person1_pairs = possibleLinks[person1];
+
+    for(string person2 : person1_pairs) {
+        Pair pair(person1, person2);
+        if(!hasConflict(pair, matching)) {
+            matching += pair;
+            auto remaining = possibleLinks;
+            remaining.remove(person1);
+            remaining.remove(person2);
+            if(hasPerfectMatchingRec(remaining, matching)) {
+                return true;
+            }
+            matching -= pair;
+
+        }
+    }
+    return false;
+}
+
+bool hasPerfectMatching(const Map<string, Set<string>>& possibleLinks, Set<Pair>& matching) {
+    if(possibleLinks.size() % 2 == 1) return false;
+
+    for(string key : possibleLinks) {
+        if(possibleLinks[key].isEmpty()) {
+            return false;
+        }
+    }
+
+    return hasPerfectMatchingRec(possibleLinks, matching);
+}
+
+
+// Modified to safely read from the original complete links map using .get()
+int totalScores(const Set<Pair>& pairs, const Map<string, Map<string, int>>& originalLinks) {
+    int result = 0;
+    for(const Pair& pair : pairs) {
+        result += originalLinks.get(pair.first()).get(pair.second());
+    }
+    return result;
+}
+
+Set<Pair> maximumWeightMatchingRec(Map<string, Map<string, int>>& possibleLinks,
+                                   const Map<string, Map<string, int>>& originalLinks) {
+    if(possibleLinks.isEmpty()) return {};
+
+    string person1 = possibleLinks.firstKey();
+    Map<string, int> person1_pairs = possibleLinks[person1];
+
+    // --- CHOICE 1: Leave person1 unmatched ---
+    possibleLinks.remove(person1); // Modify map in-place (No heavy copies!)
+
+    Set<Pair> best = maximumWeightMatchingRec(possibleLinks, originalLinks);
+    int bestScores = totalScores(best, originalLinks);
+
+    possibleLinks.put(person1, person1_pairs); // Backtrack: restore person1
+
+    // --- CHOICE 2: Pair person1 with all possible partners ---
+    for(string person2 : person1_pairs) {
+        int weight = person1_pairs.get(person2);
+
+        // Skip toxic/negative links as warned by the specs
+        if (weight <= 0) continue;
+
+        // Check if person2 is still available in our current graph pool
+        if (possibleLinks.containsKey(person2)) {
+            Pair pair(person1, person2);
+
+            // Backup person2's connections before stripping them
+            Map<string, int> person2_pairs = possibleLinks[person2];
+
+            // Modify map in-place for this branch choice
+            possibleLinks.remove(person1);
+            possibleLinks.remove(person2);
+
+            Set<Pair> candidate;
+            candidate.add(pair);
+            candidate += maximumWeightMatchingRec(possibleLinks, originalLinks);
+
+            int candidateScores = totalScores(candidate, originalLinks);
+
+            if(candidateScores > bestScores) {
+                best = candidate;
+                bestScores = candidateScores;
+            }
+
+            // Backtrack: Restore both individuals back to the pool for the next loop cycle
+            possibleLinks.put(person1, person1_pairs);
+            possibleLinks.put(person2, person2_pairs);
+        }
+    }
+
+    return best;
 }
 
 Set<Pair> maximumWeightMatching(const Map<string, Map<string, int>>& possibleLinks) {
-    /* TODO: Delete this comment and these remaining lines, then implement this function. */
-    (void) possibleLinks;
-    return { };
+    // Make a single working copy that we mutate and backtrack on
+    Map<string, Map<string, int>> workingCopy = possibleLinks;
+
+    // Pass the working copy alongside the original const version for safe scoring lookups
+    return maximumWeightMatchingRec(workingCopy, possibleLinks);
 }
 
 /* * * * * Test Cases Below This Point * * * * */

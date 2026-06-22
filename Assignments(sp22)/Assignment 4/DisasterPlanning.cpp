@@ -1,17 +1,55 @@
 #include "DisasterPlanning.h"
+#include "error.h"
+
 using namespace std;
 
+
+
+bool canBeMadeDisasterReadyRec(const Map<string, Set<string>>& roadNetwork,
+                               int numCities,
+                               Set<string>& supplyLocations,
+                               const Set<string>& uncoverdCities) {
+    if(uncoverdCities.isEmpty()) return true;
+    if(numCities == 0) return false;
+
+
+    string city1 = uncoverdCities.first();
+    Set<string> city1_neighbors = roadNetwork.get(city1);
+    supplyLocations += city1;
+
+    if(canBeMadeDisasterReadyRec(roadNetwork, numCities - 1,
+                                  supplyLocations, uncoverdCities - city1 - city1_neighbors)) {
+        return true;
+    } else {
+        supplyLocations -= city1;
+        for(string city2 : city1_neighbors) {
+            Set<string> city2_neighbors = roadNetwork.get(city2);
+            supplyLocations += city2;
+            if(canBeMadeDisasterReadyRec(roadNetwork, numCities - 1,
+                                          supplyLocations, uncoverdCities - city2 - city2_neighbors)) {
+                return true;
+            }
+            supplyLocations -= city2;//backtrack.
+        }
+    }
+
+    return false;
+}
 /* TODO: Refer to DisasterPlanning.h for more information about this function.
  * Then, delete this comment.
  */
 bool canBeMadeDisasterReady(const Map<string, Set<string>>& roadNetwork,
                             int numCities,
                             Set<string>& supplyLocations) {
-    /* TODO: Delete the next few lines and implement this function. */
-    (void) roadNetwork;
-    (void) numCities;
-    (void) supplyLocations;
-    return false;
+    if(numCities < 0) error("numCities can't be negative");
+
+    Set<string> uncoveredCities;
+    for(const string& s : roadNetwork) {
+        uncoveredCities += s;
+    }
+
+    return canBeMadeDisasterReadyRec(roadNetwork, numCities, supplyLocations, uncoveredCities);
+
 }
 
 

@@ -1,21 +1,21 @@
 Q1:
-
+A perfect matching is ideal in organ donor exchange networks (like a kidney donor chain), where matching every single patient with a compatible donor is the absolute priority. In this critical medical scenario, maximizing the total number of life-saving transplants made is far more important than optimizing for the absolute highest compatibility quality score of individual pairs. Leaving even one patient unmatched just to give someone else a slightly more optimal match could result in preventable loss of life.
 
 
 
 Q2:
 
-
+A maximum-weight matching is preferable when pairing commercial airline pilots with co-pilots for complex, high-risk flight routes where interpersonal compatibility and combined experience levels are paramount. It is far better to leave a few lower-priority or regional flights temporarily unstaffed (to be filled by on-call standby crews) than to force a perfect matching that pairs two highly incompatible or low-experience pilots together. In aviation safety, maximizing the synergistic quality and safety rating of each cockpit pair strictly outweighs the goal of keeping 100% of the active roster concurrently paired up.
 
 
 Q3:
-
+This approach is best when matching emergency rescue teams with disaster areas during a large-scale crisis, where maximizing the total number of lives saved is the singular goal. It is ethically and practically justifiable to deploy elite, specialized teams to the most critical zones to achieve a massive positive impact (very high weight matches), even if it means minor, less urgent areas receive vastly lower-tier or poorly matched support. In life-or-death resource allocation, maximizing global systemic utility strictly trumps maintaining a balanced distribution of satisfaction.
 
 
 
 Q4:
 
 
-
+An even distribution is preferable when assigning incoming freshmen to college roommates or housing pods, where preventing extreme student isolation or hostility is a core institutional goal. It is much better to ensure every single student lands in a reasonably stable, harmonious "3 out of 5" roommate pairing than to maximize total weight by creating a few perfect, ultra-compatible best-friend pairs at the expense of forcing other students into toxic, deeply unhappy living situations. Prioritizing equity over maximum total weight establishes a baseline of psychological safety and prevents
 
 
