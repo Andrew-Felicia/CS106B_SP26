@@ -1,0 +1,24 @@
+Q1:
+
+I think yes, because as software engineer, i hope to build the friendly app which everyone loves to use it.
+but since it's not included in the contract, i will also do it, but sometimes real world is complicated,
+if i don't have that time then i will not do it. but i will do it when i have time.
+
+
+Yes, engineers should have considered minimizing wrongful denials even if it was not explicitly included in the contract. Engineers have an ethical responsibility to think about the real-world impact of the systems they build, especially when those systems affect people's access to essential services such as food assistance and healthcare. Optimizing only for efficiency and fraud reduction can create incentives for a system to reject legitimate applications, which may reduce costs but harms vulnerable citizens who depend on those benefits.
+
+In this case, wrongful denials were not merely a technical issue but had serious consequences for people's well-being. Engineers should therefore have identified wrongful denials, accessibility, and service quality as important requirements and communicated these concerns to stakeholders. While they still needed to satisfy the contract, they also had a responsibility to ensure that the system served its intended purpose of helping eligible people receive benefits. A successful system should balance efficiency with fairness, accuracy, and the needs of the people affected by it.
+
+
+
+Q2:
+
+
+
+
+If I were an engineer working on this system, I would not focus exclusively on efficiency and fraud reduction. Instead, I would work with stakeholders to define multiple goals that balance cost savings with fairness, accessibility, and accuracy. In addition to reducing fraud and processing costs, I would include metrics such as minimizing wrongful denials, reducing wait times, ensuring timely responses, and maintaining high approval accuracy for eligible applicants.
+
+Algorithmic analysis tools could still be used to improve efficiency. For example, I would analyze the runtime and scalability of document-processing systems, case assignment algorithms, and fraud-detection methods to ensure the system could handle large numbers of applications efficiently. However, I would also evaluate the human impact of these algorithms. Any automated decision that could deny benefits would include safeguards such as human review, opportunities to correct missing information, and clear explanations for decisions.
+
+To avoid the negative impacts described in the case study, I would design the system with users' needs in mind. Applications would not be automatically denied because of a single missing document or a missed phone call. Instead, applicants would receive notifications, reminders, and opportunities to submit additional information. I would also monitor performance metrics related to user outcomes, such as denial rates, appeal rates, and customer wait times, rather than focusing only on cost reduction. By combining algorithmic efficiency with human-centered design and oversight, it would be possible to build a system that reduces costs and fraud while still ensuring that eligible citizens receive the benefits they need.
+

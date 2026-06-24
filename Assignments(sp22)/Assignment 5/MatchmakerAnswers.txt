@@ -1,0 +1,27 @@
+Q1:
+
+O(n^3)
+
+
+Q2:
+here is the runtime data:
+fastMaxWeightMatching
+  n = 50:       48.3844ms
+  n = 100:      215.948ms
+  n = 150:      696.076ms
+  n = 200:      1593.79ms
+  n = 250:      3047.1ms
+  n = 300:      5290.46ms
+  n = 350:      8323.61ms
+  n = 400:      12329ms
+  n = 450:      17618.4ms
+  n = 500:      24437.9ms
+
+so for n = 5000, it takes about 24437.9s, about 6.7 h.
+
+
+
+Q3:
+
+
+since one day is 86000 s, it takes around 24 hours to compute when n = 7540.
