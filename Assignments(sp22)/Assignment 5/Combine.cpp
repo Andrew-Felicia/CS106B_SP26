@@ -2,17 +2,205 @@
 #include "Combine.h"
 using namespace std;
 
-Vector<DataPoint> combine(const Vector<Vector<DataPoint>>& sequences) {
-    /* TODO: Delete the next few lines and implement this. */
-    (void) sequences;
-    return {};
+//this function merger two sorted vector into one sorted vector.
+//TC: O(n + m), n is the length of v1, and m is the length of v2.
+Vector<DataPoint> merge(const Vector<DataPoint>& v1, const Vector<DataPoint>& v2) {
+    Vector<DataPoint> result;
+    int i = 0;
+    int j = 0;
+    while(i < v1.size() && j < v2.size()) {
+        if(v1.get(i).weight <= v2.get(j).weight) {
+            result.add(v1.get(i));
+            i += 1;
+        } else {
+            result.add(v2.get(j));
+            j += 1;
+        }
+    }
+
+    while(i < v1.size()) {
+        result.add(v1.get(i));
+        i += 1;
+    }
+
+    while(j < v2.size()) {
+        result.add(v2.get(j));
+        j += 1;
+    }
+
+    return result;
 }
+
+//this function combine mutiple sorted vector into
+//one sorted vector.
+//TC: O(nlog(k)), where n is the total number of elements across all the lists and k is the number of lists.
+Vector<DataPoint> combine(const Vector<Vector<DataPoint>>& sequences) {
+    Vector<DataPoint> result;
+    if(sequences.size() == 0) {
+        return result;
+    } else if(sequences.size() == 1) {
+        return sequences.get(0);
+    } else {
+        int mid = sequences.size() / 2;
+        Vector<Vector<DataPoint>> left = sequences.subList(0, mid);
+        Vector<Vector<DataPoint>> right = sequences.subList(mid);
+        return merge(combine(left), combine(right));
+    }
+}
+
 
 
 /* * * * * * Test Cases Below This Point * * * * * */
 
 /* TODO: Add your own custom tests here! */
 
+
+STUDENT_TEST("merge handles two empty vectors") {
+    Vector<DataPoint> v1;
+    Vector<DataPoint> v2;
+
+    EXPECT(merge(v1, v2).isEmpty());
+}
+
+STUDENT_TEST("merge handles empty first vector") {
+    Vector<DataPoint> v1;
+
+    Vector<DataPoint> v2 = {
+        {"A", 1},
+        {"B", 3},
+        {"C", 5}
+    };
+
+    EXPECT_EQUAL(merge(v1, v2), v2);
+}
+
+STUDENT_TEST("merge handles empty second vector") {
+    Vector<DataPoint> v1 = {
+        {"A", 1},
+        {"B", 3},
+        {"C", 5}
+    };
+
+    Vector<DataPoint> v2;
+
+    EXPECT_EQUAL(merge(v1, v2), v1);
+}
+
+STUDENT_TEST("merge interleaves elements correctly") {
+    Vector<DataPoint> v1 = {
+        {"A", 1},
+        {"C", 3},
+        {"E", 5}
+    };
+
+    Vector<DataPoint> v2 = {
+        {"B", 2},
+        {"D", 4},
+        {"F", 6}
+    };
+
+    Vector<DataPoint> expected = {
+        {"A", 1},
+        {"B", 2},
+        {"C", 3},
+        {"D", 4},
+        {"E", 5},
+        {"F", 6}
+    };
+
+    EXPECT_EQUAL(merge(v1, v2), expected);
+}
+
+STUDENT_TEST("merge when all first elements are smaller") {
+    Vector<DataPoint> v1 = {
+        {"A", 1},
+        {"B", 2},
+        {"C", 3}
+    };
+
+    Vector<DataPoint> v2 = {
+        {"D", 10},
+        {"E", 20}
+    };
+
+    Vector<DataPoint> expected = {
+        {"A", 1},
+        {"B", 2},
+        {"C", 3},
+        {"D", 10},
+        {"E", 20}
+    };
+
+    EXPECT_EQUAL(merge(v1, v2), expected);
+}
+
+STUDENT_TEST("merge when all second elements are smaller") {
+    Vector<DataPoint> v1 = {
+        {"D", 10},
+        {"E", 20}
+    };
+
+    Vector<DataPoint> v2 = {
+        {"A", 1},
+        {"B", 2},
+        {"C", 3}
+    };
+
+    Vector<DataPoint> expected = {
+        {"A", 1},
+        {"B", 2},
+        {"C", 3},
+        {"D", 10},
+        {"E", 20}
+    };
+
+    EXPECT_EQUAL(merge(v1, v2), expected);
+}
+
+STUDENT_TEST("merge handles equal weights") {
+    Vector<DataPoint> v1 = {
+        {"A", 1},
+        {"B", 3}
+    };
+
+    Vector<DataPoint> v2 = {
+        {"C", 3},
+        {"D", 5}
+    };
+
+    Vector<DataPoint> result = merge(v1, v2);
+
+    EXPECT_EQUAL(result.size(), 4);
+
+    for (int i = 1; i < result.size(); i++) {
+        EXPECT(result[i - 1].weight <= result[i].weight);
+    }
+}
+
+
+
+STUDENT_TEST("merge catches incorrect use of i instead of j") {
+    Vector<DataPoint> v1 = {
+        {"A", 100}
+    };
+
+    Vector<DataPoint> v2 = {
+        {"B", 1},
+        {"C", 2},
+        {"D", 3}
+    };
+
+    Vector<DataPoint> result = merge(v1, v2);
+
+    Vector<DataPoint> expected = {
+        {"B", 1},
+        {"C", 2},
+        {"D", 3},
+        {"A", 100}
+    };
+
+    EXPECT_EQUAL(result, expected);
+}
 
 
 
