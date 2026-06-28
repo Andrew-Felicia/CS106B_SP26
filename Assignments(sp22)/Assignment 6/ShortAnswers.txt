@@ -1,0 +1,230 @@
+Q1:
+
+
+
+MacOS Ventura
+
+
+
+
+
+Q2:
+
+
+name -> ""
+weight -> 0.0
+
+
+
+
+
+
+Q3:
+
+      1951
+      /  \
+   1953  1954
+   /  \
+1958  1957
+
+
+      1951
+      /  \
+   1953  1957
+   /  \
+ 1958  1954
+
+
+     1951
+     /  \
+  1953  1954
+  /   \
+1957  1958
+
+
+
+
+
+
+
+
+Q4:
+
+
+              1
+           /     \
+          3       2
+        /   \    /  \
+       6     5  9    4
+      / \
+     8   7
+
+
+
+
+
+
+Q5:
+
+run dequeue() once:
+
+            2
+         /      \
+        3        4
+       / \      / \
+      6   5    9   7
+     /
+    8
+
+
+
+
+
+
+
+
+
+Q6:
+
+
+
+-------------------------------------------------------
+|     |     |     |     |     |     |     |     |     |
+|     |  2  |  3  |  4  |  6  |  5  |  9  |  7  |  8  |
+|     |     |     |     |     |     |     |     |     |
+-------------------------------------------------------
+   0     1     2     3     4     5     6     7     8
+
+
+Q7:
+
+true.
+
+Results from res/apportionment/2020.csv, with 435 seats:
+         Alabama:  7 seats, population 5,030,053
+          Alaska:  1 seat,  population 736,081
+         Arizona:  9 seats, population 7,158,923
+        Arkansas:  4 seats, population 3,013,756
+      California: 52 seats, population 39,576,757
+        Colorado:  8 seats, population 5,782,171
+     Connecticut:  5 seats, population 3,608,298
+        Delaware:  1 seat,  population 990,837
+         Florida: 28 seats, population 21,570,527
+         Georgia: 14 seats, population 10,725,274
+          Hawaii:  2 seats, population 1,460,137
+           Idaho:  2 seats, population 1,841,377
+        Illinois: 17 seats, population 12,822,739
+         Indiana:  9 seats, population 6,790,280
+            Iowa:  4 seats, population 3,192,406
+          Kansas:  4 seats, population 2,940,865
+        Kentucky:  6 seats, population 4,509,342
+       Louisiana:  6 seats, population 4,661,468
+           Maine:  2 seats, population 1,363,582
+        Maryland:  8 seats, population 6,185,278
+   Massachusetts:  9 seats, population 7,033,469
+        Michigan: 13 seats, population 10,084,442
+       Minnesota:  8 seats, population 5,709,752
+     Mississippi:  4 seats, population 2,963,914
+        Missouri:  8 seats, population 6,160,281
+         Montana:  2 seats, population 1,085,407
+        Nebraska:  3 seats, population 1,963,333
+          Nevada:  4 seats, population 3,108,462
+   New Hampshire:  2 seats, population 1,379,089
+      New Jersey: 12 seats, population 9,294,493
+      New Mexico:  3 seats, population 2,120,220
+        New York: 26 seats, population 20,215,751
+  North Carolina: 14 seats, population 10,453,948
+    North Dakota:  1 seat,  population 779,702
+            Ohio: 15 seats, population 11,808,848
+        Oklahoma:  5 seats, population 3,963,516
+          Oregon:  6 seats, population 4,241,500
+    Pennsylvania: 17 seats, population 13,011,844
+    Rhode Island:  2 seats, population 1,098,163
+  South Carolina:  7 seats, population 5,124,712
+    South Dakota:  1 seat,  population 887,770
+       Tennessee:  9 seats, population 6,916,897
+           Texas: 38 seats, population 29,183,290
+            Utah:  4 seats, population 3,275,252
+         Vermont:  1 seat,  population 643,503
+        Virginia: 11 seats, population 8,654,542
+      Washington: 10 seats, population 7,715,946
+   West Virginia:  2 seats, population 1,795,045
+       Wisconsin:  8 seats, population 5,897,473
+         Wyoming:  1 seat,  population 577,719
+
+
+
+Results from res/apportionment/2020-NYUp89.csv, with 435 seats:
+         Alabama:  7 seats, population 5,030,053
+          Alaska:  1 seat,  population 736,081
+         Arizona:  9 seats, population 7,158,923
+        Arkansas:  4 seats, population 3,013,756
+      California: 52 seats, population 39,576,757
+        Colorado:  8 seats, population 5,782,171
+     Connecticut:  5 seats, population 3,608,298
+        Delaware:  1 seat,  population 990,837
+         Florida: 28 seats, population 21,570,527
+         Georgia: 14 seats, population 10,725,274
+          Hawaii:  2 seats, population 1,460,137
+           Idaho:  2 seats, population 1,841,377
+        Illinois: 17 seats, population 12,822,739
+         Indiana:  9 seats, population 6,790,280
+            Iowa:  4 seats, population 3,192,406
+          Kansas:  4 seats, population 2,940,865
+        Kentucky:  6 seats, population 4,509,342
+       Louisiana:  6 seats, population 4,661,468
+           Maine:  2 seats, population 1,363,582
+        Maryland:  8 seats, population 6,185,278
+   Massachusetts:  9 seats, population 7,033,469
+        Michigan: 13 seats, population 10,084,442
+       Minnesota:  7 seats, population 5,709,752
+     Mississippi:  4 seats, population 2,963,914
+        Missouri:  8 seats, population 6,160,281
+         Montana:  2 seats, population 1,085,407
+        Nebraska:  3 seats, population 1,963,333
+          Nevada:  4 seats, population 3,108,462
+   New Hampshire:  2 seats, population 1,379,089
+      New Jersey: 12 seats, population 9,294,493
+      New Mexico:  3 seats, population 2,120,220
+        New York: 27 seats, population 20,215,840
+  North Carolina: 14 seats, population 10,453,948
+    North Dakota:  1 seat,  population 779,702
+            Ohio: 15 seats, population 11,808,848
+        Oklahoma:  5 seats, population 3,963,516
+          Oregon:  6 seats, population 4,241,500
+    Pennsylvania: 17 seats, population 13,011,844
+    Rhode Island:  2 seats, population 1,098,163
+  South Carolina:  7 seats, population 5,124,712
+    South Dakota:  1 seat,  population 887,770
+       Tennessee:  9 seats, population 6,916,897
+           Texas: 38 seats, population 29,183,290
+            Utah:  4 seats, population 3,275,252
+         Vermont:  1 seat,  population 643,503
+        Virginia: 11 seats, population 8,654,542
+      Washington: 10 seats, population 7,715,946
+   West Virginia:  2 seats, population 1,795,045
+       Wisconsin:  8 seats, population 5,897,473
+         Wyoming:  1 seat,  population 577,719
+
+
+
+
+
+
+
+
+
+
+
+Q8:
+
+
+true.
+
+
+
+
+
+
+
+
