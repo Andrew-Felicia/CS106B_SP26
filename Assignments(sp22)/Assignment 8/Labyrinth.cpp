@@ -3,13 +3,10 @@
 
 using namespace std;
 
-bool canEscape(Map<string, int>& isReady, char s) {
-    if(s == "SPELLBOOK" || s == "POTION" || s == "WAND") {
-        isReady.put(s, 1);
-    }
+bool canEscape(Map<Item, int>& isReady) {
 
-    if(isReady.get("SPELLBOOK") >= 1 && isReady.get("POTION") >= 1 &&
-        isReady.get("WAND") >= 1) {
+    if(isReady.get(Item::SPELLBOOK) == 1 && isReady.get(Item::POTION) == 1 &&
+        isReady.get(Item::WAND) == 1) {
         return true;
     }
     return false;
@@ -17,30 +14,52 @@ bool canEscape(Map<string, int>& isReady, char s) {
 
 
 bool isPathToFreedom(MazeCell* start, const string& moves) {
-    Map<string, int> isReady;
-    isReady.put("SPELLBOOK", 0);
-    isReady.put("POTION", 0);
-    isReady.put("WAND", 0);
+    Map<Item, int> collection;
+    collection.put(Item::SPELLBOOK, 0);
+    collection.put(Item::POTION, 0);
+    collection.put(Item::WAND, 0);
 
+    if(start->whatsHere == Item::SPELLBOOK || start->whatsHere == Item::POTION || start->whatsHere == Item::WAND) {
+        collection.put(start->whatsHere, 1);
+    }
 
 
     for(char s : moves) {
         if(s == 'N') {
+            if(start->north == nullptr) return false;
             start = start->north;
+            if(start->whatsHere == Item::SPELLBOOK || start->whatsHere == Item::POTION || start->whatsHere == Item::WAND) {
+                collection.put(start->whatsHere, 1);
+            }
         }
 
-        if(s == "S") {
-
+        if(s == 'S') {
+            if(start->south == nullptr) return false;
+            start = start->south;
+            if(start->whatsHere == Item::SPELLBOOK || start->whatsHere == Item::POTION || start->whatsHere == Item::WAND) {
+                collection.put(start->whatsHere, 1);
+            }
         }
 
-        if(s == "W") {
-
+        if(s == 'W') {
+            if(start->west == nullptr) return false;
+            start = start->west;
+            if(start->whatsHere == Item::SPELLBOOK || start->whatsHere == Item::POTION || start->whatsHere == Item::WAND) {
+                collection.put(start->whatsHere, 1);
+            }
         }
 
-        if(s == "E") {
-
+        if(s == 'E') {
+            if(start->east == nullptr) return false;
+            start = start->east;
+            if(start->whatsHere == Item::SPELLBOOK || start->whatsHere == Item::POTION || start->whatsHere == Item::WAND) {
+                collection.put(start->whatsHere, 1);
+            }
         }
     }
+
+    return canEscape(collection);
+
 }
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 19.0.2, 2026-06-29T13:32:26. -->
+<!-- Written by QtCreator 19.0.2, 2026-07-01T11:01:11. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -166,7 +166,7 @@
      <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
-     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/taoyongli/Downloads/bst/bst.pro</value>
+     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/taoyongli/CS106B_SP26/lectures_sp26/21-bst/bst.pro</value>
      <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
      <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
      <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -204,7 +204,7 @@
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph dwarf,4096 -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/taoyongli/Downloads/bst/bst.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/taoyongli/CS106B_SP26/lectures_sp26/21-bst/bst.pro</value>
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.UniqueId"></value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
