@@ -57,26 +57,6 @@ void drawSnowflake(GWindow& w, int level, GPoint start, GPoint end)
 
 //single side
 
-// int main()
-// {
-//     // This creates the graphics window.
-//     GWindow w(SCREEN_WIDTH, SCREEN_HEIGHT);
-
-//     // Determine the bottom-left and bottom-right points for the
-//     // snowflake based on constants defined at the top of the code.
-//     GPoint bottomLeft(BASE_LEFT_X, BASE_Y);
-//     GPoint bottomRight(BASE_RIGHT_X, BASE_Y);
-
-//     w.setColor("black");
-//     w.setFillColor("black");
-
-//     drawSnowflake(w, 5, bottomLeft, bottomRight);
-
-//     return 0;
-// }
-
-
-//full side.
 int main()
 {
     // This creates the graphics window.
@@ -90,11 +70,31 @@ int main()
     w.setColor("black");
     w.setFillColor("black");
 
-    GPoint top = thirdEquilateralPoint(bottomLeft, bottomRight);
-    drawSnowflake(w, 7, bottomRight, bottomLeft);
-    drawSnowflake(w, 7, bottomLeft, top);
-    drawSnowflake(w, 7, top, bottomRight);
+    drawSnowflake(w, 5, bottomLeft, bottomRight);
 
     return 0;
 }
+
+
+//full side.
+// int main()
+// {
+//     // This creates the graphics window.
+//     GWindow w(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+//     // Determine the bottom-left and bottom-right points for the
+//     // snowflake based on constants defined at the top of the code.
+//     GPoint bottomLeft(BASE_LEFT_X, BASE_Y);
+//     GPoint bottomRight(BASE_RIGHT_X, BASE_Y);
+
+//     w.setColor("black");
+//     w.setFillColor("black");
+
+//     GPoint top = thirdEquilateralPoint(bottomLeft, bottomRight);
+//     drawSnowflake(w, 7, bottomRight, bottomLeft);
+//     drawSnowflake(w, 7, bottomLeft, top);
+//     drawSnowflake(w, 7, top, bottomRight);
+
+//     return 0;
+//}
 

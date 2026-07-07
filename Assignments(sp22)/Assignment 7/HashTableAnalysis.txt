@@ -1,0 +1,33 @@
+Q1. Successful lookups
+
+Robin Hood hashing is consistently faster than linear probing for successful lookups, and the performance gap grows gradually as the load factor increases. Both methods perform a linear probe sequence, but Robin Hood hashing keeps probe distances more balanced by relocating elements during insertion, reducing the average search distance. As linear probing suffers from increasing primary clustering at high load factors, its successful lookup cost rises more quickly.
+
+Q2. Unsuccessful lookups
+
+Robin Hood hashing is much faster than linear probing for unsuccessful lookups, and the performance gap grows rapidly as the load factor increases. Linear probing must often scan through long clusters before determining that an element is absent, while Robin Hood hashing can terminate early once it encounters an element with a smaller probe distance than the search would require. This early-termination rule prevents long scans and becomes increasingly beneficial at high load factors.
+
+Q3. Successful insertions
+
+Robin Hood hashing is generally faster than linear probing for successful insertions, and the performance advantage grows gradually as the load factor increases. Although Robin Hood hashing may perform swaps while inserting, it maintains a more even distribution of probe distances, reducing the formation of long clusters. As a result, insertions remain relatively efficient compared with linear probing, whose insertion cost increases as clusters grow.
+
+Q4. Unsuccessful insertions
+
+Robin Hood hashing is consistently faster than linear probing for unsuccessful insertions, with the gap increasing gradually as the load factor rises. Both methods probe until an empty slot is found, but Robin Hood hashing reduces clustering by redistributing elements during insertion. Consequently, it reaches empty locations with fewer probes than linear probing when the table becomes crowded.
+
+Q5. Successful deletions
+
+Robin Hood hashing generally performs successful deletions faster than linear probing at moderate load factors, although the gap narrows and eventually reverses at very high load factors. Both methods must first locate the element, but Robin Hood hashing benefits from shorter lookup paths until deletion overhead begins to dominate. Near full capacity, maintaining the Robin Hood invariants after deletion becomes increasingly expensive, causing deletion performance to degrade faster than in linear probing.
+
+(This matches your data: Robin Hood is faster until about α≈0.9, then becomes slower by α=0.96–0.97.)
+
+Q6. Unsuccessful deletions
+
+Robin Hood hashing is substantially faster than linear probing for unsuccessful deletions, and the gap grows rapidly as the load factor increases. Since an unsuccessful deletion first performs an unsuccessful lookup, Robin Hood hashing benefits from its early-termination rule, while linear probing must continue scanning long clusters. This causes linear probing's deletion cost to increase dramatically in highly loaded tables.
+
+Q7.
+
+A load factor of 0 would waste almost all of the table's memory, since nearly every slot would remain empty. Although operations would be extremely fast because collisions are almost nonexistent, the space overhead would be prohibitively high and the hash table would store very few elements relative to its size.
+
+Q8.
+
+I would choose Robin Hood hashing with a load factor of about 0.8. At this load factor it provides consistently fast insertions, lookups, and deletions while using memory efficiently, and it significantly outperforms linear probing on unsuccessful operations. Increasing the load factor further saves little memory but leads to noticeably higher operation costs, especially for deletions.

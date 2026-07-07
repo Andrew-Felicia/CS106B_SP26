@@ -1,0 +1,78 @@
+Q1:
+
+
+. 31 41 53 93 . 26 97 58 59
+
+Q2:
+
+
+0.8
+
+Q3:
+
+it's impossible ton do this, because the same slots, same hash function,
+and insert elements in the same order, you will get the same linear probing
+table.
+
+
+Q4:
+
+number 2 slot, and consequtive slots.
+
+
+Q5:
+
+
+number 7 slot, and consequtive slots.
+
+Q6:
+
+
+. 31 T T 93 . 26 97 58 59
+
+Q7:
+
+106 31 107 110 93 . 26 97 58 59
+
+
+Q8:
+
+
+108 151 221 103 . 145 245 246 106 107
+ 2   0   1   0  -  0   1   1   2   2
+
+
+
+
+Q9:
+impossible to do that, because we insert the same values in the same order into the same
+hash table, and using the same hash function, the result will be the same.
+
+
+
+Q10:
+
+slot 5, 6, 7
+
+
+
+Q11:
+
+slot 0, 1
+
+
+Q12:
+
+108 221 . 103 . 145 245 246 106 107
+ 2   0  -  0  -  0   1   1   2   2
+
+
+Q13:
+
+108 221 . 103 . 245 246 106 107 .
+ 2   0  -  0  -  0   0   1   1  -
+
+
+
+
+
